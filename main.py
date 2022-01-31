@@ -7,6 +7,7 @@ from fastapi_sessions.frontends.implementations import SessionCookie, CookiePara
 from fastapi.responses import HTMLResponse
 from datetime import datetime
 from paswwords import verify_password, get_password_hash
+import uvicorn
 
 class SessionData(BaseModel):
     username: str
