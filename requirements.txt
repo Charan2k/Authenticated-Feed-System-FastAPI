@@ -2,3 +2,4 @@ fastapi
 fastapi-sessions
 bcrypt
 passlib
+python-multipart
