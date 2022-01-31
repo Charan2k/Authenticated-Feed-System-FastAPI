@@ -73,7 +73,7 @@ app = FastAPI()
 
 @app.get("/")
 def home():
-    return HTMLResponse("<h1>Go to /docs to proceed with the API</h1>")
+    return HTMLResponse("<h1>Go to <a href='/docs'>/docs</a> to proceed with the application</h1>")
 
 @app.post("/login")
 async def login(name: str, password: str, response: Response):
