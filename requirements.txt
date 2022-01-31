@@ -3,3 +3,4 @@ fastapi-sessions
 bcrypt
 passlib
 python-multipart
+gunicorn
