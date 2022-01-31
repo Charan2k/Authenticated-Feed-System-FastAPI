@@ -4,3 +4,4 @@ bcrypt
 passlib
 python-multipart
 gunicorn
+uvicorn
