@@ -6,7 +6,6 @@ from fastapi_sessions.session_verifier import SessionVerifier
 from fastapi_sessions.frontends.implementations import SessionCookie, CookieParameters
 from fastapi.responses import HTMLResponse
 from datetime import datetime
-from paswwords import verify_password, get_password_hash
 
 class SessionData(BaseModel):
     username: str
@@ -78,7 +77,7 @@ def home():
 @app.post("/login")
 async def login(name: str, password: str, response: Response):
     if myusers.get(name) is not None:
-        if verify_password(password, myusers[name]):
+        if myusers[name] == password:
             session_id = uuid4()
             data = SessionData(username=name)
             mysessions[session_id] = name
@@ -99,7 +98,7 @@ async def login(name: str, password: str, response: Response):
 @app.get("/create_user")
 async def create_user(name: str, password: str):
     if myusers.get(name) is None:
-        myusers[name] = get_password_hash(password)
+        myusers[name] = password
         return {"detail": f"User {name} created"}
     else:
         return {"error": "Username already exists"}
