@@ -61,7 +61,6 @@ class BasicVerifier(SessionVerifier[UUID, SessionData]):
         """If the session exists, it is valid"""
         return True
 
-
 verifier = BasicVerifier(
     identifier="general_verifier",
     auto_error=True,
@@ -106,7 +105,7 @@ async def create_user(name: str, password: str):
 
 @app.get("/whoami", dependencies=[Depends(cookie)])
 async def whoami(session_id: UUID = Depends(cookie),session_data: SessionData = Depends(verifier)):
-    print(session_id)
+    # print(session_id)
     return session_data
 
 
@@ -148,7 +147,7 @@ async def del_session(id: str, name: str, response: Response,session_id: UUID = 
 @app.get("/get_sessions")
 async def get_sessions(response: Response, session_id: UUID = Depends(cookie)):
     session = await backend.read(session_id)
-    print(mysessions)
+    # print(mysessions)
     if not session:
         response.status_code = 404
         return {"detail": "No Session Found"}
