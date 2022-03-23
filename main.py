@@ -172,3 +172,7 @@ async def broadcast(message: str, session_id: UUID = Depends(cookie)):
     now = datetime.now()
     messages.append(f"{session.username} ({now.strftime('%H:%M:%S %d/%m/%Y')}) : {message}")
     return {"detail": "message sent"}
+
+# added a line for testing purposes
+# to check the integration with 
+# with github
